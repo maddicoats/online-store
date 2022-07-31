@@ -1,0 +1,27 @@
+.Feat {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 15px solid rgb(37, 35, 35);
+    border-right: none;
+    border-left: none;
+    background-color: white;
+}
+
+.Home {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 15px solid rgb(37, 35, 35);
+    background-color: white;
+
+    &__Cards {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+}

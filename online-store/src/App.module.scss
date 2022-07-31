@@ -1,0 +1,20 @@
+* {
+  font-family: monospace;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  & h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    margin: 10px;
+    color: darkkhaki;
+    text-decoration: underline;
+    text-decoration-color: rgb(48, 48, 48);
+
+  }
+}
