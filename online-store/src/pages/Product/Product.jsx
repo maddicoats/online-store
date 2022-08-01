@@ -7,9 +7,9 @@ const Product = () => {
     const [isFav, setIsFav] = useState(false);
 
     const handleFav = () => {
-        setIsFav(!isFav);
-        console.log(isFav)
+        setIsFav(!isFav);        
     };
+    console.log(isFav)
 
     // useEffect(() => {
     //     handleUpdate({

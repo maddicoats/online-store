@@ -2,6 +2,10 @@
   font-family: monospace;
 }
 
+html {
+  background-color: #2b2a2a;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -15,6 +19,6 @@
     color: darkkhaki;
     text-decoration: underline;
     text-decoration-color: rgb(48, 48, 48);
-
+    margin-bottom: 0px;
   }
 }
