@@ -12,7 +12,7 @@ function App() {
       </NavLink>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route exact path='product/:id' element={<Product/>} />
+        <Route exact path='product/:sid' element={<Product/>} />
       </Routes>
     </BrowserRouter>
   );

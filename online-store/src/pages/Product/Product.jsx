@@ -1,22 +1,43 @@
 import style from './Product.module.scss'
 import { useLocation, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
+import { updateSword, getSword } from '../../services/server';
+
+import firestore from '../../firebase';
+import { doc, updateDoc } from 'firebase/firestore';
 
 const Product = () => {
     const { state } = useLocation();
     const [isFav, setIsFav] = useState(false);
 
+    useEffect(() => {
+        getData();
+        setIsFav(Boolean(sword.fav))
+    }, [])
+
     const handleFav = () => {
-        setIsFav(!isFav);        
+        setIsFav(!isFav)
+        updateSword(sword.id.toString(), { "fav": !isFav })
+        getData()
     };
     console.log(isFav)
 
-    // useEffect(() => {
-    //     handleUpdate({
-    //         ...state.sword,
-    //         fav: !state.sword.fav,
-    //     });
-    // }, [isFav]);
+
+    const [sword, setSword] = useState(state.sword);
+    console.log("1: " + sword.id.toString())
+
+
+    const getData = async () => {
+        const data = await getSword(sword.id.toString())
+        setSword(data);
+    }
+
+    const updateSword = async (id, record) => {
+        const collRef = firestore.collection('swords')
+        const docRef = collRef.doc(id)
+        await docRef.update(record)
+
+    }
     
 
     return (

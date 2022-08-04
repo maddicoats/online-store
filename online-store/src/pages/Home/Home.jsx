@@ -2,14 +2,11 @@ import style from './Home.module.scss'
 import { seedSwords, getSwords } from '../../services/server';
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { updateSword } from '../../services/server';
 import Carousel from '../../components/Carousel';
 
 const Home = () => {
     const [swords, setSwords] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-
-    console.log(swords)
 
     const getData = async () => {
         const data = await getSwords()
@@ -28,12 +25,6 @@ const Home = () => {
         setSearchParams({ filter })
     }
 
-    const handleUpdate = async (newRecord) => {
-    const {id, ...record} = newRecord;
-    await updateSword(id, record);
-    getData();
-    }
-
 
     return (
         <div className={style.Box}>
@@ -45,7 +36,7 @@ const Home = () => {
             return (
                 <div key={i}>
                 <Link  
-                    to={`/product/${sword.id}`}
+                    to={`/product/${sword.sid}`}
                     state={{ sword: sword }}
                 >
                     <img className={style.Home__Cards_Image} src={sword.image} />
@@ -84,7 +75,7 @@ const Home = () => {
             return (
                 <div key={i}>
                 <Link  
-                    to={`/product/${sword.id}`}
+                    to={`/product/${sword.sid}`}
                     state={{ sword: sword }}
                 >
                     <img className={style.Home__Cards_Image} src={sword.image} />

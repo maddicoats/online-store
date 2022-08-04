@@ -1,6 +1,6 @@
 const swords = [
     {
-        id: 1,
+        sid: 1,
         name: "Iron Shortsword",
         price: "$550",
         variants: ["38cm", "52cm", "61cm"],
@@ -10,7 +10,7 @@ const swords = [
     },
     
     {
-        id: 2,
+        sid: 2,
         name: "Steel Shortsword",
         price: "$350",
         variants: ["38cm", "52cm", "61cm"],
@@ -20,7 +20,7 @@ const swords = [
     },
 
     {
-        id: 3,
+        sid: 3,
         name: "Iron Longsword",
         price: "$799",
         variants: ["100cm", "115cm", "130cm"],
@@ -30,7 +30,7 @@ const swords = [
     },
 
     {
-        id: 4,
+        sid: 4,
         name: "Iron Saber",
         price: "$669",
         variants: ["89cm", "92cm"],
@@ -40,7 +40,7 @@ const swords = [
     },
 
     {
-        id: 5,
+        sid: 5,
         name: "Iron Tanto",
         price: "$479",
         variants: ["15cm", "23cm","30cm"],
@@ -54,7 +54,7 @@ const swords = [
 
 
     {
-        id: 6,
+        sid: 6,
         name: "Katana",
         price: "$550",
         variants: ["60cm", "70cm"],
@@ -63,7 +63,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 7,
+        sid: 7,
         name: "Claymore",
         price: "$1299",
         variants: ["120cm", "130cm","140cm", "mega"],
@@ -72,7 +72,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 8,
+        sid: 8,
         name: "Master Sword",
         price: "$1 000 000",
         variants: ["90cm"],
@@ -81,7 +81,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 9,
+        sid: 9,
         name: "Zweihander",
         price: "$1439",
         variants: ["213cm", "220cm"],
@@ -90,7 +90,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 10,
+        sid: 10,
         name: "Scimitar",
         price: "$499",
         variants: ["76cm", "80cm","85cm", "91cm"],
@@ -99,7 +99,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 11,
+        sid: 11,
         name: "AS100 Safety Knife",
         price: "$39",
         variants: ["17cm"],
@@ -108,7 +108,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 12,
+        sid: 12,
         name: "Cutlass",
         price: "$199",
         variants: ["60cm", "70cm"],
@@ -117,16 +117,16 @@ const swords = [
         fav: false,
     },
     {
-        id: 13,
+        sid: 13,
         name: "Stone (sword sold separately)",
         price: "$90",
-        variants: ["15cm", "23cm","30cm"],
+        variants: ["60cm", "90cm","140cm"],
         image: "https://p3d.in/model_data/snapshot/Cyd0o",
         quantity: 60,
         fav: false,
     },
     {
-        id: 14,
+        sid: 14,
         name: "Epée",
         price: "$620",
         variants: ["110cm"],
@@ -135,7 +135,7 @@ const swords = [
         fav: false,
     },
     {
-        id: 15,
+        sid: 15,
         name: "Cardboard Sword",
         price: "$15",
         variants: ["40cm", "70cm"],

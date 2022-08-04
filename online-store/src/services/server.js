@@ -1,5 +1,6 @@
 import firestore from "../firebase"
 import swords from "./swords.js"
+import { doc, updateDoc } from "firebase/firestore";
 
 
 export const seedSwords = async () => {
@@ -37,15 +38,35 @@ export const getSwords = async () => {
     return data
 }
 
+export const getSword = async (id) => {
+    const target = firestore.collection('swords').doc(id)
+    const querySnap = await target.get()
+    // const document = querySnap.docs
+    // const data = document.map
+    // ((doc) => {
+    //     return {...doc.data()}
+    // })
+    // console.log(data)
+    return querySnap
+    
+}
+
 
 //UPDATE - Update a single document in our DB
-export const updateSword = async (id, record) => {
-    const collectionRef = firestore.collection("swords");
+// export const updateSword = async (id, record) => {
+//     const sword = firestore.collection('swords').document()
 
-    // getting a document reference
-    const docRef = collectionRef.doc(id);
-    await docRef.update(record)
-}
+//     const documentID = swords.documentID
+    
+//     // const collectionRef = firestore.collection("swords");
+
+//     // // getting a document reference
+//     // const docRef = collectionRef.doc(id);
+//     // await docRef.update(record)
+
+//     // const target = doc(firestore, 'swords', id)
+//     // await updateDoc(target, record)
+// }
 
 
 // // DELETE - deleting a specific student using its is in our DB 
