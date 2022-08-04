@@ -38,6 +38,23 @@ export const getSwords = async () => {
     return data
 }
 
+export const getItems = async () => {
+    const collectionRef = firestore.collection("cart");
+
+    // QuerySnapshot
+    const querySnap = await collectionRef.get();
+
+    // getting an array of all documents
+    const documents = querySnap.docs;
+
+    // use data() method to get an obj containing the documnets data
+    const data = documents.map((doc) => {
+        return {...doc.data()}
+    })
+
+    return data
+}
+
 export const getSword = async (id) => {
     const target = firestore.collection('swords').doc(id)
     const querySnap = await target.get()

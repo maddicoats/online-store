@@ -7,10 +7,10 @@ html {
 }
 
 .App {
-  text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 
   & h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -20,5 +20,19 @@ html {
     text-decoration: underline;
     text-decoration-color: rgb(48, 48, 48);
     margin-bottom: 0px;
+    width: fit-content;
+  }
+
+  &_Cart {
+    background-color: white;
+    width: fit-content;
+    position: absolute;
+    top: 0px;
+    margin-top: 0px;
+    text-decoration: white !important;
+    right: 10px;
+    border-radius: 25px;
+    padding: 3px;
+    font-size: 40px !important;
   }
 }
