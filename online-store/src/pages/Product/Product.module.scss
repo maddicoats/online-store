@@ -55,16 +55,19 @@
         background-color: darkkhaki;
         border: 3px solid rgb(203, 197, 114);
         font-size: 18px;
+        font-weight: bold;
         padding: 8px;
         margin-top: 10px;
+        color: #2b2a2a;
 
         &:hover {
             background-color: rgb(176, 171, 100);
         }
 
         &:active {
-            border-color: darkkhaki;
-            color: rgb(162, 158, 92);
+            border-color: rgb(212, 206, 120);
+            //color: rgb(162, 158, 92);
+            transform: translateY(1%);
         }
     }
 
@@ -84,11 +87,15 @@
 
         &:active {
             border-color: rgb(239, 151, 122);
-            ;
+            transform: translateY(1%);
         }
     }
 
     & .Fav {
         background-color: darksalmon !important;
+
+        &:hover {
+            background-color: rgb(209, 128, 102) !important;
+        }
     }
 }

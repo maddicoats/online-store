@@ -1,59 +1,80 @@
 import React, { useState, useEffect } from 'react'
 import style from './Cart.module.scss'
-import { getItems } from '../../services/server'
+import { getSwords, getItems, deleteItem, updateSword } from '../../services/server'
+import { NavLink } from 'react-router-dom'
 
 const Cart = () => {
     const [items, setItems] = useState([])
 
     const getData = async () => {
-        const data = await getItems()
+        const data = await getSwords()
         setItems(data);
     } 
+
+    // const handleDelete = async (event) => {
+    //     await deleteItem(event.target.value)
+    //     getData();
+    // }
+
+    const handleCart = (event) => {
+        updateSword(event.target.value.toString(), { "inCart": false });
+        getData();
+    };
     
     useEffect(() => {
         getData();
     }, [])
 
-    
-    console.log(items)
+    const cartItemsArray = items.filter((item) => item.inCart === true)
+
+    const total = cartItemsArray.map( item => parseInt(item.price.replace(/\s/g, '').substring(1))).reduce((prev, a) => prev + a, 0);
 
     return (
+        <main>
         <div className={style.Cart}>
+            <h1>Shopping Cart</h1>
             <div className={style.Cart__Cards}>
                 {items.map((item, i) => {
+                if (item.inCart === true) {
                 return (
-                    <div className={style.Cart__Cards_Box} key={i}>
+                    <div id="items" className={style.Cart__Cards_Box} key={i}>
                         
+                        <div className={style.Cart__Cards_Box_Box}>
                         <img className={style.Cart__Cards_Image} src={item.image} />
 
                         <div className={style.Cart__Cards_Details}>
+
                             <h3 className={style.Cart__Cards_Name}>{item.name}</h3>
-                            <p><b>{item.price}</b></p>
+
+                            <p><b id={i}>{item.price}</b></p>
                             
                             <div className={style.Select}>
                             <label htmlFor="quantity">Quantity: </label>
                             <select name="quantity" id="quantity">
                             
-                            {Array.apply(null, Array(item.stock)).map(function (x, i) { return i+1; }).map((i) => {
-                                return (<option key={i} value={i}>{i}</option>)
-                            })}
-                                
+                                {Array.apply(null, Array(item.quantity)).map(function (x, i) { return i+1; }).map((i) => {
+                                    return (<option key={i} value={i}>{i}</option>)
+                                })} 
                             </select>
                             </div>
+
+                        </div>
                         </div>
 
                         <div className={style.Cart__Cards_Delete}>
-                            <button>X</button>
+                            <button 
+                            value={item.id}
+                            onClick={handleCart}
+                            title="delete"
+                            >✖</button>
                         </div>
-                        
-
-                    </div>
-                )
+                    </div> 
+                )} 
                 })}
-                
-            </div>
-            
+            <h2>Total: ${total}</h2>
+            </div> 
         </div>
+        </main>
     )
 }
 

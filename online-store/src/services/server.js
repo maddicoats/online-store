@@ -3,16 +3,20 @@ import swords from "./swords.js"
 import { doc, updateDoc } from "firebase/firestore";
 
 
+export const addToCart = async (record) => {
+    const collectionRef = firestore.collection("cart");
+    
+    //https://firebase.google.com/docs/reference/js/v8/firebase.firestore.CollectionReference#add
+    await collectionRef.add(record)
+}
+
 export const seedSwords = async () => {
     const collectionRef = firestore.collection("swords");
 
-    // data is QuerySnapshot
     const data = await collectionRef.get();
 
-    // stopping execution of function if DB is not empty
     if (!data.empty) return;
 
-    // map through every item inside our data array and adds them to the "swords" collection
     const promises = swords.map(async (student) => {
         return await collectionRef.add(student);
     })
@@ -20,7 +24,7 @@ export const seedSwords = async () => {
     await Promise.all(promises);
 }
 
-// READ - getting all documents (students) in our DB
+// READ
 export const getSwords = async () => {
     const collectionRef = firestore.collection("swords");
 
@@ -68,30 +72,18 @@ export const getSword = async (id) => {
     
 }
 
-
-//UPDATE - Update a single document in our DB
-// export const updateSword = async (id, record) => {
-//     const sword = firestore.collection('swords').document()
-
-//     const documentID = swords.documentID
-    
-//     // const collectionRef = firestore.collection("swords");
-
-//     // // getting a document reference
-//     // const docRef = collectionRef.doc(id);
-//     // await docRef.update(record)
-
-//     // const target = doc(firestore, 'swords', id)
-//     // await updateDoc(target, record)
-// }
+//UPDATE
+export const updateSword = async (id, record) => {
+    const collRef = firestore.collection('swords')
+    const docRef = collRef.doc(id)
+    await docRef.update(record)
+}
 
 
-// // DELETE - deleting a specific student using its is in our DB 
+// DELETE ITEM
+export const deleteItem = async (id) => {
+    const collectionRef = firestore.collection("cart");
+    const docRef = collectionRef.doc(id);
 
-// export const deleteStudent = async (id) => {
-//     const collectionRef = firestore.collection("students");
-//     const docRef = collectionRef.doc(id);
-
-//     // deleting the specified docRef in our DB
-//     await docRef.delete()
-// }
+    await docRef.delete()
+}

@@ -28,11 +28,20 @@ html {
     width: fit-content;
     position: absolute;
     top: 0px;
-    margin-top: 0px;
+    margin-top: 15px !important;
     text-decoration: white !important;
     right: 10px;
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 3px;
-    font-size: 40px !important;
+    font-size: 33px !important;
+
+    &:hover {
+      transform: rotateZ(360deg);
+      transition: 500ms;
+    }
+
+    &:active {
+      transform: translateY(5%)
+    }
   }
 }

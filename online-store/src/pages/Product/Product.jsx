@@ -3,12 +3,12 @@ import { useLocation, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import { updateSword, getSword } from '../../services/server';
 
-import firestore from '../../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
 
 const Product = () => {
     const { state } = useLocation();
-    const [isFav, setIsFav] = useState(false);
+    const [isFav, setIsFav] = useState(state.sword.fav);
+    const [sword, setSword] = useState(state.sword);
+    const [isInCart, setIsInCart] = useState(state.sword.inCart)
 
     useEffect(() => {
         getData();
@@ -22,22 +22,32 @@ const Product = () => {
     };
     console.log(isFav)
 
+    const handleCart = () => {
+        setIsInCart(!isInCart)
+        updateSword(sword.id.toString(), { "inCart": !isInCart })
+        getData()
+    };
+    console.log(isInCart)
 
-    const [sword, setSword] = useState(state.sword);
-    console.log("1: " + sword.id.toString())
-
+    const handleAlert = () => {
+        alert("item is currently out of stock");
+    }
 
     const getData = async () => {
         const data = await getSword(sword.id.toString())
         setSword(data);
     }
 
-    const updateSword = async (id, record) => {
-        const collRef = firestore.collection('swords')
-        const docRef = collRef.doc(id)
-        await docRef.update(record)
-
-    }
+    // const handleAddToCart = () => {
+    //     addToCart({
+    //         name: state.sword.name,
+    //         sid: state.sword.sid,
+    //         image: state.sword.image,
+    //         price: state.sword.price,
+    //         stock: state.sword.quantity,
+    //         quantity: 1
+    //     })
+    // }
     
 
     return (
@@ -73,7 +83,9 @@ const Product = () => {
         <div>
             <button title={isFav? "unfavourite" : "favourite"} className={isFav? style.Fav : null} 
                 onClick={handleFav}>❤</button>
-            <button>Add to cart</button>
+            <button 
+            onClick={state.sword.quantity > 0? handleCart : handleAlert}
+            >{isInCart? `Remove from cart` : `Add to cart`}</button>
         </div>
         
     </div>

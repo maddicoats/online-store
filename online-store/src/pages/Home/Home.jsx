@@ -81,7 +81,7 @@ const Home = () => {
                     <img className={style.Home__Cards_Image} src={sword.image} />
                     <h3 className={style.Home__Cards_Name}>{sword.name}</h3>
                 </Link>
-                <p ><b>{sword.price}</b></p>
+                <p><b>{sword.price}</b></p>
                 </div>
             )
             })}
