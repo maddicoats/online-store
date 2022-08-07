@@ -48,11 +48,31 @@ main {
         &_Details {
             margin: 10px;
             text-align: left;
+
+            & h3 {
+                font-size: 20px;
+            }
+
+            & p,
+            label {
+                font-size: 16px;
+            }
+
+            & select {
+                border-radius: 0px;
+                border-color: rgb(211, 211, 211);
+                background-color: rgb(244, 244, 244);
+
+                &:focus {
+                    outline: none;
+                }
+            }
         }
 
         &_Delete {
             margin: 20px;
             margin-right: 2px;
+
 
             & button {
                 border-radius: 0px;

@@ -57,7 +57,7 @@ const Product = () => {
         </Link>
     
     <div className={style.Card}>    
-        <img src={state.sword.image} />
+        <img src={state.sword.image} alt={`a ${state.sword.name} on a white background`}/>
 
         <h1>{state.sword.name}</h1>     
 

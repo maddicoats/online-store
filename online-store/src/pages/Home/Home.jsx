@@ -39,7 +39,7 @@ const Home = () => {
                     to={`/product/${sword.sid}`}
                     state={{ sword: sword }}
                 >
-                    <img className={style.Home__Cards_Image} src={sword.image} />
+                    <img className={style.Home__Cards_Image} src={sword.image} alt={`a ${sword.name} on a white background`} />
                     <h3 className={style.Home__Cards_Name}>{sword.name}</h3>
                 </Link>
                 <p ><b>{sword.price}</b></p>

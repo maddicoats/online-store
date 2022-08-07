@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import style from './Cart.module.scss'
 import { getSwords, getItems, deleteItem, updateSword } from '../../services/server'
-import { NavLink } from 'react-router-dom'
 
 const Cart = () => {
     const [items, setItems] = useState([])
@@ -40,7 +39,7 @@ const Cart = () => {
                     <div id="items" className={style.Cart__Cards_Box} key={i}>
                         
                         <div className={style.Cart__Cards_Box_Box}>
-                        <img className={style.Cart__Cards_Image} src={item.image} />
+                        <img className={style.Cart__Cards_Image} src={item.image} alt={`a ${item.name} on a white background`} />
 
                         <div className={style.Cart__Cards_Details}>
 

@@ -1,7 +1,5 @@
 import firestore from "../firebase"
 import swords from "./swords.js"
-import { doc, updateDoc } from "firebase/firestore";
-
 
 export const addToCart = async (record) => {
     const collectionRef = firestore.collection("cart");
