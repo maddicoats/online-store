@@ -8,6 +8,7 @@ This project required me to create a mock website for an online store using Reac
 
 <img src="https://user-images.githubusercontent.com/107823527/183287698-7cc23a15-d027-44eb-ad2f-df9e2dc0e4a4.png" height='400px' /> <img src="https://user-images.githubusercontent.com/107823527/183287755-9294ac43-a036-41e3-8026-323c1b0237a2.png" height='400px' />
 
+<br>
 
 ## MVP
 
@@ -36,8 +37,9 @@ Using Firestore and react create, a cart system. Create a cart page in your reac
 
     -   Ability to change quantity of products in cart
     -   Ability to remove items from cart
-    
-    
+
+<br>
+
 ## Approach
 
 First, I created a basic template for the React App with files for all the components and pages I thought I would need (home, product, carousel, etc.). Then I started collating the product data, as i wasn't using an existing API or data set, and added it to my firestore database, mapping the contents into my home page. Next i worked on the product page, using react-router-dom to link to product page using the id and passing the state of the specific product through that link.
