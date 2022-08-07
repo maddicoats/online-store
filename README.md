@@ -42,4 +42,8 @@ First, I created a basic template for the React App with files for all the compo
 
 On the product page, i added the functionality to favourite a product and add it to the card, which involved adding properties in the product database for "isFav" and "inCart" with either a true or false value, then creating state for them in the App and a toggle connected to the respective buttons to update the database when clicked. I also added an alert to warn users when they try to add an item that it out of stock.
 
-After that i implemented the carousel on the home page, I wasn't sure where to start with this so i follow [this](https://dev.to/rakumairu/simple-react-carousel-24m0) example, 
+After that i implemented the carousel on the home page, I wasn't sure where to start with this so i looked at a variety of examples and eventually decided to follow [this one](https://dev.to/rakumairu/simple-react-carousel-24m0), as it had the simple design i wanted and didn't require any extra installations. I also added a search bar to the home page that filters through the products.
+
+For the cart page, i originally created a new collection in the database and wrote a function to add a new product to the collection, but i realised it would be simpler to just add the "inCart" property to each product and only map the products for which the value is true. I used the quantity property to create select options only for the number of products currently available, and wrote some logic to add the prices of the products in the cart together to add a total price to the page. Similarly to the favourite and add to cart functions, i made a delete function that updates the "inCart" value to false when the delete button is clicked.
+
+I did the styling as i went, starting with the home page and using that as a general guide for the theme of the rest of the App. 
