@@ -8,6 +8,7 @@ This project required me to create a mock website for an online store using Reac
 
 <img src="https://user-images.githubusercontent.com/107823527/183287698-7cc23a15-d027-44eb-ad2f-df9e2dc0e4a4.png" height='400px' /> <img src="https://user-images.githubusercontent.com/107823527/183287755-9294ac43-a036-41e3-8026-323c1b0237a2.png" height='400px' />
 
+
 ## MVP
 
 At a minimum the e-shop website should have two pages:
@@ -35,6 +36,7 @@ Using Firestore and react create, a cart system. Create a cart page in your reac
 
     -   Ability to change quantity of products in cart
     -   Ability to remove items from cart
+    
     
 ## Approach
 
