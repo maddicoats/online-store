@@ -1,26 +1,5 @@
 import firestore from "../firebase"
-import swords from "./swords.js"
 
-export const addToCart = async (record) => {
-    const collectionRef = firestore.collection("cart");
-    
-    //https://firebase.google.com/docs/reference/js/v8/firebase.firestore.CollectionReference#add
-    await collectionRef.add(record)
-}
-
-export const seedSwords = async () => {
-    const collectionRef = firestore.collection("swords");
-
-    const data = await collectionRef.get();
-
-    if (!data.empty) return;
-
-    const promises = swords.map(async (student) => {
-        return await collectionRef.add(student);
-    })
-
-    await Promise.all(promises);
-}
 
 // READ
 export const getSwords = async () => {

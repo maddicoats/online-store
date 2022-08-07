@@ -1,5 +1,5 @@
 import style from './Home.module.scss'
-import { seedSwords, getSwords } from '../../services/server';
+import { getSwords } from '../../services/server';
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Carousel from '../../components/Carousel';
@@ -28,7 +28,6 @@ const Home = () => {
 
     return (
         <div className={style.Box}>
-        {/* <button onClick={seedSwords}>seed</button> */}
         <div className={style.Feat}>
             <h2>FEATURED🗡PRODUCTS</h2>
             <Carousel>

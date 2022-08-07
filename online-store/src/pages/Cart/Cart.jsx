@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import style from './Cart.module.scss'
-import { getSwords, getItems, deleteItem, updateSword } from '../../services/server'
+import { getSwords, updateSword } from '../../services/server'
 
 const Cart = () => {
     const [items, setItems] = useState([])
+
 
     const getData = async () => {
         const data = await getSwords()
         setItems(data);
     } 
-
-    // const handleDelete = async (event) => {
-    //     await deleteItem(event.target.value)
-    //     getData();
-    // }
 
     const handleCart = (event) => {
         updateSword(event.target.value.toString(), { "inCart": false });
@@ -22,8 +18,9 @@ const Cart = () => {
     
     useEffect(() => {
         getData();
-    }, [])
+    }, [items])
 
+    // PRICE TOTAL:
     const cartItemsArray = items.filter((item) => item.inCart === true)
 
     const total = cartItemsArray.map( item => parseInt(item.price.replace(/\s/g, '').substring(1))).reduce((prev, a) => prev + a, 0);
@@ -31,7 +28,7 @@ const Cart = () => {
     return (
         <main>
         <div className={style.Cart}>
-            <h1>Shopping Cart</h1>
+            <h1>Shopping Cart:</h1>
             <div className={style.Cart__Cards}>
                 {items.map((item, i) => {
                 if (item.inCart === true) {

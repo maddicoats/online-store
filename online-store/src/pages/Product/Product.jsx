@@ -10,6 +10,11 @@ const Product = () => {
     const [sword, setSword] = useState(state.sword);
     const [isInCart, setIsInCart] = useState(state.sword.inCart)
 
+    const getData = async () => {
+        const data = await getSword(sword.id.toString())
+        setSword(data);
+    }
+
     useEffect(() => {
         getData();
         setIsFav(Boolean(sword.fav))
@@ -20,35 +25,19 @@ const Product = () => {
         updateSword(sword.id.toString(), { "fav": !isFav })
         getData()
     };
-    console.log(isFav)
+    //console.log(isFav)
 
     const handleCart = () => {
         setIsInCart(!isInCart)
         updateSword(sword.id.toString(), { "inCart": !isInCart })
         getData()
     };
-    console.log(isInCart)
+    //console.log(isInCart)
 
     const handleAlert = () => {
         alert("item is currently out of stock");
     }
 
-    const getData = async () => {
-        const data = await getSword(sword.id.toString())
-        setSword(data);
-    }
-
-    // const handleAddToCart = () => {
-    //     addToCart({
-    //         name: state.sword.name,
-    //         sid: state.sword.sid,
-    //         image: state.sword.image,
-    //         price: state.sword.price,
-    //         stock: state.sword.quantity,
-    //         quantity: 1
-    //     })
-    // }
-    
 
     return (
     <div className={style.Cardbox}>
@@ -85,7 +74,7 @@ const Product = () => {
                 onClick={handleFav}>❤</button>
             <button 
             onClick={state.sword.quantity > 0? handleCart : handleAlert}
-            >{isInCart? `Remove from cart` : `Add to cart`}</button>
+            >{isInCart? `REMOVE FROM CART` : `ADD TO CART`}</button>
         </div>
         
     </div>
