@@ -46,7 +46,7 @@ const Cart = () => {
                             
                             <div className={style.Select}>
                             <label htmlFor="quantity">Quantity: </label>
-                            <select name="quantity" id="quantity">
+                            <select name="quantity" id={i}>
                             
                                 {Array.apply(null, Array(item.quantity)).map(function (x, i) { return i+1; }).map((i) => {
                                     return (<option key={i} value={i}>{i}</option>)
