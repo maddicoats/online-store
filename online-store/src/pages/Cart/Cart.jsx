@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import style from './Cart.module.scss'
-import { getSwords, updateSword } from '../../services/server'
+import { getItems, deleteItem } from '../../services/server'
 
 const Cart = () => {
     const [items, setItems] = useState([])
 
-
-    const getData = async () => {
-        const data = await getSwords()
-        setItems(data);
-    } 
-
-    const handleCart = (event) => {
-        updateSword(event.target.value.toString(), { "inCart": false });
-        getData();
-    };
-    
     useEffect(() => {
         getData();
-    }, [items])
+    }, [])
+
+    const getData = async () => {
+        const data = await getItems()
+        setItems(data);
+    } 
+    //console.log(items[0].id)
+
+    const handleDelete = async (event) => {
+        await deleteItem(event.target.value.toString())
+        //console.log(event.target.value.toString())
+        getData();
+    }
+
 
     // PRICE TOTAL:
     const cartItemsArray = items.filter((item) => item.inCart === true)
@@ -31,7 +33,6 @@ const Cart = () => {
             <h1>Shopping Cart:</h1>
             <div className={style.Cart__Cards}>
                 {items.map((item, i) => {
-                if (item.inCart === true) {
                 return (
                     <div id="items" className={style.Cart__Cards_Box} key={i}>
                         
@@ -60,12 +61,12 @@ const Cart = () => {
                         <div className={style.Cart__Cards_Delete}>
                             <button 
                             value={item.id}
-                            onClick={handleCart}
+                            onClick={handleDelete}
                             title="delete"
                             >✖</button>
                         </div>
                     </div> 
-                )} 
+                ) 
                 })}
             <h2>Total: ${total}</h2>
             </div> 

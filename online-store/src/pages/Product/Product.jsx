@@ -1,7 +1,7 @@
 import style from './Product.module.scss'
 import { useLocation, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import { updateSword, getSword } from '../../services/server';
+import { addToCart, updateSword, getSword } from '../../services/server';
 
 
 const Product = () => {
@@ -25,7 +25,7 @@ const Product = () => {
         updateSword(sword.id.toString(), { "fav": !isFav })
         getData()
     };
-    console.log(isFav)
+    //console.log(isFav)
 
     // const handleCart = () => {
     //     setIsInCart(!isInCart)
@@ -33,6 +33,17 @@ const Product = () => {
     //     getData()
     // };
     // //console.log(isInCart)
+
+    const handleAddToCart = () => {
+        addToCart({
+            name: state.sword.name,
+            sid: state.sword.sid,
+            image: state.sword.image,
+            price: state.sword.price,
+            stock: state.sword.quantity,
+            quantity: 1,
+        })
+    }
 
     const handleAlert = () => {
         alert("item is currently out of stock");
@@ -73,8 +84,11 @@ const Product = () => {
             <button title={isFav? "unfavourite" : "favourite"} className={isFav? style.Fav : null} 
                 onClick={handleFav}>❤</button>
             <button 
+            onClick={handleAddToCart}
             // onClick={state.sword.quantity > 0? handleCart : handleAlert}
-            >{isInCart? `REMOVE FROM CART` : `ADD TO CART`}</button>
+            >ADD TO CART
+                {/* {isInCart? `REMOVE FROM CART` : `ADD TO CART`} */}
+                </button>
         </div>
         
     </div>
