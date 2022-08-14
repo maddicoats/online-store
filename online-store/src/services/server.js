@@ -54,7 +54,7 @@ export const getItems = async () => {
     const querySnap = await collectionRef.get();
     const documents = querySnap.docs;
     const data = documents.map((doc) => {
-        return {...doc.data()}
+        return {...doc.data(), id: doc.id}
     })
     return data
 }
